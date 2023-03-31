@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  --orbitron: 'Orbitron', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--orbitron);
+}
+
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  padding: 2rem;
+  max-width: 37.5rem;
+  background-color: #BABABA;
+  border-radius: 2.5rem;
+
+}
+
+.display {
+  max-width: 31rem;
+  min-height: 7.5rem;
+  background-color: #F2F2F2;
+  border-radius: 1.5rem;
+  grid-area: display;
+  padding-left: 2rem;
+  display: flex;
+  align-items: center;
+  font-size: 4.8rem;
+}
+
+.result {
+  font-size: 4.8rem;
+  font-family: var(--orbitron);
+}
+
+.calculator-buttons {
+  display: grid;
+  grid-template-areas: 
+                       "back clear percentage divide" 
+                       "seven eight nine multiply"
+                       "four five six minus"
+                       "one two three plus"
+                       "negative zero dot equals";
+  gap: 1.5rem;
+}
+
+.calc-button {
+  background-color: #F2F2F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 6.5rem;
+  min-height: 4.5rem;
+  border: none;
+  border-radius: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25),
+              1px 1px 2px rgba(0, 0, 0, 0.25),
+              -2px -2px 2px rgba(255, 255, 255, 0.25),
+              -6px -4px 6px rgba(255, 255, 255, 0.25);
+
+}
+
+.button-back {
+  grid-area: back;
+}
+
+.button-clear {
+  grid-area: clear;
+}
+
+.button-percentage {
+  grid-area: percentage;
+}
+
+.button-divide {
+  grid-area: divide;
+}
+
+.button-negative {
+  grid-area: negative;
+}
+
+.button-0 {
+  grid-area: zero;
+}
+
+.button-dot {
+  grid-area: dot;
+}
+
+.button-equals {
+  grid-area: equals;
+}
+
+.button-1 {
+  grid-area: one;
+}
+
+.button-2 {
+  grid-area: two;
+}
+
+.button-3 {
+  grid-area: three;
+}
+
+.button-plus {
+  grid-area: plus;
+}
+
+.button-4 {
+  grid-area: four;
+}
+
+.button-5 {
+  grid-area: five;
+}
+
+.button-6 {
+  grid-area: six;
+}
+
+.button-minus {
+  grid-area: minus;
+}
+
+.button-7 {
+  grid-area: seven;
+}
+
+.button-8 {
+  grid-area: eight;
+}
+
+.button-9 {
+  grid-area: nine;
+}
+
+.button-multiply {
+  grid-area: multiply;
+}
