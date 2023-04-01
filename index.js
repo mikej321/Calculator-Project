@@ -5,6 +5,8 @@ const operator = document.querySelectorAll('.operator');
 const equals = document.querySelector('.button-equals');
 const clearButton = document.querySelector('.button-clear');
 const decimal = document.querySelector('.button-dot');
+const minus = document.querySelector('.button-negative');
+const backButton = document.querySelector('.button-back');
 
 result.textContent = '';
 
@@ -85,10 +87,28 @@ decimal.addEventListener('click', function() {
    result.append(this.textContent);
 })
 
+minus.addEventListener('click', function() {
+   num[0] = num[0] * -1;
+   result.textContent = '';
+   for (let digit in num) {
+      result.append(num[digit]);
+   }
+})
+
+backButton.addEventListener('click', function() {
+   num.pop();
+   result.textContent = '';
+   for (let digit in num) {
+      result.append(num[digit]);
+   }
+})
+
+
+
 /* equals will create a new variable named ans that will hold the answer to the problem.
-   It will take the myOperator variable from clicking the operator and perform one of 4
-   operations depending on which operator was pressed. Next, it will clear the display
-   and append the answer to the display. Finally, it will clear all arrays and the operator */
+It will take the myOperator variable from clicking the operator and perform one of 4
+operations depending on which operator was pressed. Next, it will clear the display
+and append the answer to the display. Finally, it will clear all arrays and the operator */
 
 
 equals.addEventListener('click', function() {
@@ -100,26 +120,19 @@ equals.addEventListener('click', function() {
    switch(myOperator) {
       case 'add':
          ans = add(operand[0], operand[1]);
-         result.textContent = '';
-         
-         
+         result.textContent = '';     
          break;
       case 'subtract':
          ans = subtract(operand[0], operand[1]);
          result.textContent = '';
-         
-         
          break;
       case 'multiply':
          ans = multiply(operand[0], operand[1]);
          result.textContent = '';
-         
-         
          break;
       case 'divide':
          ans = divide(operand[0], operand[1]);
          result.textContent = '';
-         
          break;
    }
 
@@ -145,6 +158,7 @@ clearButton.addEventListener('click', function() {
    myOperator = '';
    result.textContent = '';
 })
+
 
 
 
