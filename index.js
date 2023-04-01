@@ -1,30 +1,167 @@
+const result = document.querySelector('.result');
+const calcButtons = document.querySelectorAll('.calc-button');
+const numberButton = document.querySelectorAll('.numberButton');
+const operator = document.querySelectorAll('.operator');
+const equals = document.querySelector('.button-equals');
+const clearButton = document.querySelector('.button-clear');
+const decimal = document.querySelector('.button-dot');
+
+result.textContent = '';
 
 
-function add(...num) {
+/* Store the first number that is input into the calculator
+   when a user presses an operator, and also save which
+   operation has been chosen and then operate() on them when
+   the user presses the '=' key. */
 
-  return [...num].reduce((total, accumulator) => total + accumulator, 0);
+/* Once operate() has been called, update the display
+   with the 'solution' to the operation. */
+
+/* This is the hardest part of the project. I need
+to figure out how to store all of the values and call
+the operate function with them. */
+
+
+let add = (...numbers) => {
+  
+  return numbers.reduce((accumulator, current) => accumulator + current, 0);
 }
 
-add(2, 4, 6, 12);
-
-function subtract(...num) {
-  return [...num].reduce((total, accumulator) => total - accumulator)
+let subtract = (...numbers) => {
+  
+  return numbers.reduce((accumulator, current) => accumulator - current);
 }
 
-subtract(10, 5, 2);
-
-
-function multiply(...num) {
-  return [...num].reduce((total, accumulator) => total * accumulator, 1);
+let multiply = (...numbers) => {
+  
+  return numbers.reduce((accumulator, current) => accumulator * current, 1);
 }
 
-multiply(2, 5, 5);
-
-function divide(...num) {
-  return [...num].reduce((total, accumulator) => total / accumulator);
+let divide = (...numbers) => {
+  
+  return numbers.reduce((accumulator, current) => accumulator / current);
 }
 
-divide(50, 5, 2);
+// create an array to hold the digits that the functions will perform on
+
+let num = [];
+
+// Create an array to hold the combined num arrays to make the final operand numbers
+
+let operand = [];
+let myOperator;
+
+numberButton.forEach((button) => {
+   button.addEventListener('click', function() {
+
+      // populates the display by appending digits after each other
+      let selection = this.textContent;
+      result.append(selection);
+
+      // pushes those digits into the num array
+      num.push(parseFloat(selection));
+   })
+})
+
+/* When an operator is pressed, it takes the value of the operator and stores
+   it into the selection variable. Next, it combines all digits that are in
+   the num array and pushes it to the operand array as a number. Afterwards,
+   it resets the num array and appends the operator to the display */
+
+operator.forEach((button) => {
+   button.addEventListener('click', function() {
+      let selection = this.value; 
+      myOperator = selection;  
+      operand.push(parseFloat(num.join('')));
+      num = [];
+      result.append(this.textContent);
+   })
+})
+
+let lastNum;
+
+decimal.addEventListener('click', function() {
+   num[num.length - 1] = num[num.length - 1] + '.';
+   result.append(this.textContent);
+})
+
+/* equals will create a new variable named ans that will hold the answer to the problem.
+   It will take the myOperator variable from clicking the operator and perform one of 4
+   operations depending on which operator was pressed. Next, it will clear the display
+   and append the answer to the display. Finally, it will clear all arrays and the operator */
+
+
+equals.addEventListener('click', function() {
+   let ans;
+   operand.push(parseFloat(num.join('')));
+   num = [];
+   switch(myOperator) {
+      case 'add':
+         ans = add(operand[0], operand[1]);
+         result.textContent = '';
+         result.append(ans);
+         operand = [];
+         myOperator = '';
+         break;
+      case 'subtract':
+         ans = subtract(operand[0], operand[1]);
+         result.textContent = '';
+         result.append(ans);
+         operand = [];
+         myOperator = '';
+         break;
+      case 'multiply':
+         ans = multiply(operand[0], operand[1]);
+         result.textContent = '';
+         result.append(ans);
+         operand = [];
+         myOperator = '';
+         break;
+      case 'divide':
+         ans = divide(operand[0], operand[1]);
+         result.textContent = '';
+         result.append(ans);         
+         operand = [];
+         myOperator = '';
+         break;
+   }
+
+   num.push(ans);
+   debugger;
+})
+
+clearButton.addEventListener('click', function() {
+   num = [];
+   operand = [];
+   myOperator = '';
+   result.textContent = '';
+})
+
+
+
+
+
+
+/* Create the functions that populate the display
+   when you click the number buttons. You should be
+   storing the 'display value' in a variable somewhere
+   for use in the next step. */
+
+/* Make the calculator work! You'll need to store the
+   first number that is input into the calculator when
+   a user presses an operator, and also save which operation
+   has been chosen and then operate() on them when the user
+   presses the '=' key. */
+
+/* You should already have the code that can populate the display,
+   so once operate() has been called, update the display with the
+   'solution' to the operation */
+
+/* This is the hardest part of the project. You need to figure out
+   how to store all the values and call the operate function with them.
+   Don't feel bad if it takes you awhile to figure out the logic. */
+
+
 
 
 

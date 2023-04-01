@@ -26,6 +26,11 @@ body {
   font-family: var(--orbitron);
 }
 
+button {
+  cursor: pointer;
+}
+
+
 .calculator-container {
   display: flex;
   flex-direction: column;
