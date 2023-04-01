@@ -93,41 +93,50 @@ decimal.addEventListener('click', function() {
 
 equals.addEventListener('click', function() {
    let ans;
+   let stringNum;
+   let fixedNum; 
    operand.push(parseFloat(num.join('')));
    num = [];
    switch(myOperator) {
       case 'add':
          ans = add(operand[0], operand[1]);
          result.textContent = '';
-         result.append(ans);
-         operand = [];
-         myOperator = '';
+         
+         
          break;
       case 'subtract':
          ans = subtract(operand[0], operand[1]);
          result.textContent = '';
-         result.append(ans);
-         operand = [];
-         myOperator = '';
+         
+         
          break;
       case 'multiply':
          ans = multiply(operand[0], operand[1]);
          result.textContent = '';
-         result.append(ans);
-         operand = [];
-         myOperator = '';
+         
+         
          break;
       case 'divide':
          ans = divide(operand[0], operand[1]);
          result.textContent = '';
-         result.append(ans);         
-         operand = [];
-         myOperator = '';
+         
          break;
    }
 
-   num.push(ans);
-   debugger;
+   stringNum = ans.toString().length;
+   
+   if (stringNum > 6) {
+      fixedNum = parseFloat(ans.toFixed(5));
+      result.append(fixedNum);
+   } else {
+      fixedNum = ans;
+      result.append(fixedNum);
+   }
+
+   operand = [];
+   myOperator = '';
+
+   num.push(fixedNum);
 })
 
 clearButton.addEventListener('click', function() {
