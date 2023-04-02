@@ -7,6 +7,7 @@ const clearButton = document.querySelector('.button-clear');
 const decimal = document.querySelector('.button-dot');
 const minus = document.querySelector('.button-negative');
 const backButton = document.querySelector('.button-back');
+const percentage = document.querySelector('.button-percentage');
 
 result.textContent = '';
 
@@ -101,6 +102,16 @@ backButton.addEventListener('click', function() {
    for (let digit in num) {
       result.append(num[digit]);
    }
+})
+
+/* The calculation for percentage is taking the number 2 decimal places back and
+   multiplying it to the first operand or vice versa. Afterwards, you add the result
+   to the operand that isn't a percentage */
+
+percentage.addEventListener('click', function() {
+   num[num.length - 1] = 0 + '.' + 0 + num[num.length - 1];
+   debugger;
+   result.append(this.textContent);
 })
 
 
