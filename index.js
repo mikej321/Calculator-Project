@@ -84,7 +84,11 @@ operator.forEach((button) => {
 let lastNum;
 
 decimal.addEventListener('click', function() {
-   num[num.length - 1] = num[num.length - 1] + '.';
+   if (num.length == 0) {
+      num[0] = 0 + '.';
+   } else {
+      num[num.length - 1] = num[num.length - 1] + '.';
+   }
    result.append(this.textContent);
 })
 
@@ -110,7 +114,6 @@ backButton.addEventListener('click', function() {
 
 percentage.addEventListener('click', function() {
    num[num.length - 1] = 0 + '.' + 0 + num[num.length - 1];
-   debugger;
    result.append(this.textContent);
 })
 
